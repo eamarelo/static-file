@@ -4,7 +4,7 @@
 // const sql = require('mssql')
 // const { poolPromise } = require('../../db.js')
 // const jwt_decode = require('jwt-decode')
-const testFolder = '\\green-sage\mssqlserver\GREENWISHES\Documents';
+const testFolder = '//green-sage/mssqlserver/GREENWISHES/Documents/';
 const fs = require('fs');
 
 module.exports = class GetPdf {
