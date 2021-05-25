@@ -6,8 +6,10 @@
 // const jwt_decode = require('jwt-decode')
 const testFolder = '//green-sage/mssqlserver/GREENWISHES/Documents/';
 const fs = require('fs');
+var file = fs.createReadStream('//green-sage/mssqlserver/GREENWISHES/Documents/V-FA-201900859.pdf');
+var stat = fs.statSync('//green-sage/mssqlserver/GREENWISHES/Documents/V-FA-201900859.pdf');
 
-module.exports = class GetPdf {
+module.exports = class ReadPdf {
   constructor (app) {
     this.app = app
     this.UserTrio
@@ -19,14 +21,13 @@ module.exports = class GetPdf {
    * Middleware
    */
    middleware() {
-     this.app.get(`/static-file/pdf/get/`, async (req, res) => {
+     this.app.get(`/static-file/pdf/read/`, async (req, res) => {
       try {
-          console.log('tesssssss')
-          fs.readdir(testFolder, (err, files) => {
-            files.forEach(file => {
-              console.log(file);
-            });
-          });
+
+        res.setHeader('Content-Length', stat.size);
+        res.setHeader('Content-Type', 'application/pdf');
+        res.setHeader('Content-Disposition', 'attachment; filename=quote.pdf');
+        file.pipe(res);
       	// const queryString = 'SELECT * FROM users'
       	// con.query(queryString, (error, result, field) => {
       	// 	return res.status(200).send(result)
