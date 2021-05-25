@@ -38,6 +38,7 @@ module.exports = class Server {
    */
   routes() {
     new routes.pdf.GetPdf(this.app)
+    new routes.pdf.ReadPdf(this.app)
 
     // If route not exist
     this.app.use((req, res) => {

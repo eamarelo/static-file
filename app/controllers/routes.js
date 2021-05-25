@@ -4,9 +4,11 @@
 
 // const ReadUser = require("./users/read.js")
 const GetPdf = require("./pdf/getPdf.js")
+const ReadPdf = require("./pdf/readPdf.js")
 
 module.exports = {
   pdf: {
-    GetPdf
+    GetPdf,
+    ReadPdf
   }
 }
